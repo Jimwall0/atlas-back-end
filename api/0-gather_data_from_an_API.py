@@ -8,7 +8,7 @@ import urllib.request
 app = Flask(__name__)
 
 
-def fetch_quest(url):
+def fetch_data(url):
     with urllib.request.urlopen(url) as response:
         return json.loads(response.read())
 
