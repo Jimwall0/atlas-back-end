@@ -10,9 +10,9 @@ def fetch_request(url):
         return json.loads(input.read())
 
 
-def todo_list(employee_id):
-    employee = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    employee_todos = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
+def todo_list(id):
+    employee = f"https://jsonplaceholder.typicode.com/users/{id}"
+    employee_todos = f"https://jsonplaceholder.typicode.com/users/{id}/todos"
 
     try:
         todos = fetch_request(employee_todos)
@@ -21,11 +21,13 @@ def todo_list(employee_id):
         todos_list_len = len(todos_list)
         employee_data = fetch_request(employee)
         user_name = employee_data["name"]
-        print(f"Employee {user_name} is done with tasks({todos_list_len}/{todos_len}):")
+        print(f"Employee {user_name} is done with tasks"
+              f"({todos_list_len}/{todos_len}):")
         for n in todos_list:
             print(f"\t {n}")
     except urllib.error.URLError as e:
         print(e)
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
