@@ -50,7 +50,7 @@ def json_export(id):
     try:
         tasks = fetch_request(employee_todos)
         with open(f"{id}.json", "w") as file:
-            json.dump({id:tasks}, file)
+            json.dump({id: tasks}, file)
     except urllib.error.URLError as e:
         print(e)
 
