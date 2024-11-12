@@ -38,7 +38,7 @@ def csv_export(id):
         tasks = fetch_request(employee_todos)
         username = worker["username"]
         with open(f"{id}.csv", "w") as file:
-            csv_writer = csv.writer(file)
+            csv_writer = csv.writer(file, quotechar='"', quoting=csv.QUOTE_ALL)
             for n in tasks:
                 csv_writer.writerow([id, username, n["completed"], n["title"]])
     except urllib.error.URLError as e:
