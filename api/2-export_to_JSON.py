@@ -46,11 +46,23 @@ def csv_export(id):
 
 
 def json_export(id):
+    employee = f"https://jsonplaceholder.typicode.com/users/{id}"
     employee_todos = f"https://jsonplaceholder.typicode.com/users/{id}/todos"
     try:
+        worker = fetch_request(employee)
         tasks = fetch_request(employee_todos)
+        username = worker["username"]
         with open(f"{id}.json", "w") as file:
-            json.dump({id: tasks}, file)
+            task_list = []
+            for n in tasks:
+                task_list.append(
+                    {
+                        "task": n["title"],
+                        "completed": n["completed"],
+                        "username": username
+                    }
+                )
+            json.dump({id: task_list}, file)
     except urllib.error.URLError as e:
         print(e)
 
