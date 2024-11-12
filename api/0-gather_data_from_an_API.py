@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This is file trying to use some rest api"""
-import urllib.request
 import json
+import urllib.request
 import sys
 
 
@@ -17,7 +17,6 @@ def todo_list(id):
     try:
         todos = fetch_request(employee_todos)
         todos_list = [item["title"] for item in todos if item["completed"]]
-        todos_list.sort()
         todos_len = len(todos)
         todos_list_len = len(todos_list)
         employee_data = fetch_request(employee)
