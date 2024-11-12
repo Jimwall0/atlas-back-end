@@ -37,7 +37,7 @@ def csv_export(id):
         worker = fetch_request(employee)
         tasks = fetch_request(employee_todos)
         username = worker["username"]
-        with open("USER_ID.csv", "w") as file:
+        with open(f"{id}.csv", "w") as file:
             csv_writer = csv.writer(file)
             for n in tasks:
                 csv_writer.writerow([id, username, n["completed"], n["title"]])
