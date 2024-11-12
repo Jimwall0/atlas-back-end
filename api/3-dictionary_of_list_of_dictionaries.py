@@ -86,7 +86,7 @@ def json_export_all():
                     }
                 )
             structure[id] = employee_list
-        with open("todo_all_employee.json", "w") as file:
+        with open("todo_all_employees.json", "w") as file:
             json.dump(structure, file)
     except Exception as e:
         print(e)
