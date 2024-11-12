@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """This is file trying to use some rest api"""
 import json
-import urllib.request
 import sys
+import urllib.request
 
 
 def fetch_request(url):
