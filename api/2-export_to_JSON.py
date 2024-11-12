@@ -45,6 +45,16 @@ def csv_export(id):
         print(e)
 
 
+def json_export(id):
+    employee_todos = f"https://jsonplaceholder.typicode.com/users/{id}/todos"
+    try:
+        tasks = fetch_request(employee_todos)
+        with open(f"{id}.json", "w") as file:
+            json.dump({id:tasks}, file)
+    except urllib.error.URLError as e:
+        print(e)
+
+
 if __name__ == '__main__':
     if len(sys.argv) != 2:
         print("Usage: python script.py <employee_id>")
@@ -56,4 +66,4 @@ if __name__ == '__main__':
         print("Please provide a valid integer for the employee ID.")
         sys.exit(1)
 
-    csv_export(employee_id)
+    json_export(employee_id)
